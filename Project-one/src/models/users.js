@@ -1,6 +1,6 @@
 const conexao = require('../database/db')
 
-
+//funções que iram executar as tarefas do CRUID do usuário
 async function creatUser(name, email, password) {
     const conn = await conexao.connect();
     const sql = 'INSERT INTO users(name, email, password) VALUES (?,?,?);';
