@@ -9,6 +9,7 @@ module.exports = {
     async creatusers(req, res) {
         const { name, email, password } = req.body;
         try {
+            //verifico se existe algum usuário cadastrado no banco de dados com este email
             const verify = await users.getUsermail(email);
             if (await verify.length == 0) {
                 const crypted_pass = crypt.hashSync(password, salt);
@@ -52,6 +53,7 @@ module.exports = {
         const { id, name, email, password } = req.body;
 
         try {
+            //verifico se existe algum usuário cadastrado no banco de dados com este email
             const verify = await users.getUsermail(email);
             if (await verify.length == 0) {
                 const crypted_pass = crypt.hashSync(password, salt);
@@ -72,8 +74,8 @@ module.exports = {
     async deleteusers(req, res) {
         try {
             const { id } = req.body;
+            //verifico se foi passado algum id para executar o delete
             const verify = await users.getUser(id);
-
             if (await verify.length == 0) {
                 return res.status(404).json({
                     status: 'falha',
