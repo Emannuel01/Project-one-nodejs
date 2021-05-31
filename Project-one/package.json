@@ -1,5 +1,5 @@
 {
-    "name": "project-one",
+    "name": "project-one nodejs",
     "version": "1.0.0",
     "description": "Meu primeiro projeto em nodejs",
     "main": "server.js",
