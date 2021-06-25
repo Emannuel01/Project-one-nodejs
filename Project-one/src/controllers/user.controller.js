@@ -6,7 +6,7 @@ const salt = crypt.genSaltSync(10);
 const timestamp = new Date();
 
 module.exports = {
-    async creatusers(req, res) {
+    async creatUsers(req, res) {
         const { name, email, password } = req.body;
         try {
             //verifico se existe algum usuário cadastrado no banco de dados com este email
@@ -24,7 +24,7 @@ module.exports = {
             } else {
                 return res.status(406).json({
                     status: 'falha',
-                    mensage: 'Já possui usuário com o email cadastrado'
+                    message: 'Já possui usuário com o email cadastrado'
                 })
             }
         } catch (err) {
@@ -32,7 +32,7 @@ module.exports = {
         }
     },
 
-    async getusers(req, res) {
+    async getUsers(req, res) {
         try {
             const { id } = req.body;
 
@@ -48,7 +48,7 @@ module.exports = {
         }
     },
 
-    async updateusers(req, res) {
+    async updateUsers(req, res) {
 
         const { id, name, email, password } = req.body;
 
@@ -63,7 +63,7 @@ module.exports = {
             } else {
                 return res.status(406).json({
                     status: 'falha',
-                    mensage: 'Já possui usuário com o email cadastrado'
+                    message: 'Já possui usuário com o email cadastrado'
                 })
             }
         } catch (err) {
@@ -71,7 +71,7 @@ module.exports = {
         }
     },
 
-    async deleteusers(req, res) {
+    async deleteUsers(req, res) {
         try {
             const { id } = req.body;
             //verifico se foi passado algum id para executar o delete
@@ -79,12 +79,12 @@ module.exports = {
             if (await verify.length == 0) {
                 return res.status(404).json({
                     status: 'falha',
-                    mensage: 'usuário não encontrado na base'
+                    message: 'usuário não encontrado na base'
                 })
             } else {
                 return res.status(200).json({
                     status: 'sucesso',
-                    mensage: `Usuario id ${id} deletado com sucesso`
+                    message: `Usuario id ${id} deletado com sucesso`
                 })
             }
         } catch (err) {
