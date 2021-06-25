@@ -42,7 +42,7 @@ async function deleteUsers(id) {
         return err;
     }
 }
-async function getUsermail(mail) {
+async function getUserMail(mail) {
     try {
         const conn = await conexao.connect();
         const sql = 'SELECT * FROM users WHERE email=?';
